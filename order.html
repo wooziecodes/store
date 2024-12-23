@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kura kura store ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary: #447A6E;
+            --secondary: #8FB5AE;
+            --accent: #B4D9D2;
+            --background: #F6F8F9;
+            --text: #2D3F4D;
+            --text-light: #6B7C88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(to bottom, var(--accent), var(--background));
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .header p {
+            color: var(--text);
+            font-size: 1.125rem;
+            max-width: 36rem;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .story-section {
+            background-color: var(--accent);
+            padding: 4rem 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .story-container {
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .main-content {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-header {
+            background-color: var(--accent);
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background-color: var(--background);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #386459;
+        }
+
+        .variant-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .variant-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .variant-btn.selected {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: rgba(68, 122, 110, 0.05);
+        }
+
+        .info-section {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .note-section {
+            background-color: var(--accent);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--primary);
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: 500;
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .community-photos {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .photo-container {
+            aspect-ratio: 16/9;
+            background-color: var(--background);
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border: none;
+            border-radius: 9999px;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .slide-button:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .slide-button.prev {
+            left: 1rem;
+        }
+
+        .slide-button.next {
+            right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal.active {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Order Form Modal -->
+    <div class="modal-backdrop" id="orderModal">
+        <div class="modal">
+            <button class="close-button" onclick="closeModal()">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-header">
+                <h2 style="color: var(--primary)">yay! let's get your order sorted 🛍️</h2>
+                <p style="color: var(--text-light); margin-top: 0.5rem">we'll send you payment details once we confirm your order!</p>
+            </div>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label class="form-label">name</label>
+                    <input type="text" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">email</label>
+                    <input type="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">delivery address</label>
+                    <textarea class="form-input" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">order details</label>
+                    <div style="color: var(--text-light); background: var(--background); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem">
+                        <div id="orderSummary"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn">
+                    <i data-lucide="check"></i>
+                    confirm order
+                </button>
+            </form>
+        </div>
+    </div>
+    <header class="header">
+        <h1>hey friends! 👋</h1>
+        <p>we've been getting requests for merch and finally made some cute stuff! super excited to share these with our kura community 🎉</p>
+    </header>
+
+    <section class="story-section">
+        <div class="story-container">
+            <div class="story-card">
+                <p style="color: var(--text-light)">
+                    it all started in 2023 when wooz, Veric, and Arin noticed that many people found it hard to express and process their emotions. they wanted to create an app that made emotional journaling feel more natural and friendly - like chatting with someone who really gets you.
+                    <br><br>
+                    that's how kura was born! 🐣 named after the gentle sea turtle, our app helps you track your emotional journey and discover patterns in your feelings, one check-in at a time. your patient companion through all of life's ups and downs.
+                    <br><br>
+                    today, we're a tiny (but mighty!) team working from our favorite cafes in singapore, building kura one feature at a time. every piece of merch helps fuel our mission to make emotional wellness accessible and fun for everyone! 💚
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="community-photos">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem">the kura fam 💚</h2>
+            <div class="photo-container">
+                <img src="/api/placeholder/800/450" alt="Community photo" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="photo-caption"></div>
+            </div>
+            <button class="slide-button prev">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="slide-button next">
+                <i data-lucide="chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="text-center">
+            <span class="badge">limited release • sg only for now! 🇸🇬</span>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>smol kura plushie</h3>
+                </div>
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="/api/placeholder/400/400" alt="Kura Plushie" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1rem">your very own kura! each plushie (20cm) is carefully made with lots of love 💚 perfect desk companion for your journaling sessions!</p>
+                    <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary)">S$29.90</p>
+                    <button class="btn" onclick="openModal('smol kura plushie', 'S$29.90')">
+                        <i data-lucide="shopping-cart"></i>
+                        add to cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>kura cap</h3>
+                </div>
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="/api/placeholder/400/400" alt="Kura Cap" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1rem">represent team kura with this comfy cap! embroidered with our favorite turtle friend. adjustable strap to fit most head sizes 🧢</p>
+                    <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary)">S$24.90</p>
+                
+                    <button class="btn" onclick="openModal('kura cap', 'S$24.90', document.querySelector('.variant-btn.selected').textContent)">
+                        <i data-lucide="shopping-cart"></i>
+                        add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 style="color: var(--primary); margin-bottom: 1.5rem">the logistics stuff 📦</h2>
+            <div style="color: var(--text-light); display: grid; gap: 0.75rem">
+                <p>• singapore addresses only (for now!)</p>
+                <p>• paynow or wise transfer</p>
+                <p>• free delivery if you spend above S$50</p>
+                <p>• we'll ship within 3-5 working days</p>
+            </div>
+        </div>
+
+        <div class="note-section">
+            <p>
+                psst! we're a tiny team of 3 making these with love. 
+                each order helps us keep kura swimming! 🐢💚
+            </p>
+        </div>
+
+        <div style="text-align: center; padding: 2rem 0">
+            <p style="color: var(--text-light)">ordering now? we'll make sure it reaches you before the holidays! 🎄</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>made with 💚 by the kura team</p>
+        <p style="margin-top: 0.5rem">questions? dm us on instagram @kurakura.sg</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Modal functionality
+        const modal = document.getElementById('orderModal');
+        const modalBackdrop = document.querySelector('.modal-backdrop');
+        let currentProduct = null;
+
+        function openModal(productName, price, variant = '') {
+            modalBackdrop.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            currentProduct = { name: productName, price, variant };
+            
+            // Update order summary
+            const orderSummary = document.getElementById('orderSummary');
+            orderSummary.innerHTML = `
+                <p><strong>${productName}</strong> ${variant ? `(${variant})` : ''}</p>
+                <p>price: ${price}</p>
+            `;
+            
+            setTimeout(() => {
+                modal.querySelector('.modal').classList.add('active');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.querySelector('.modal').classList.remove('active');
+            setTimeout(() => {
+                modalBackdrop.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Close modal if clicking outside
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) {
+                closeModal();
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('orderForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you could send the form data to your endpoint or email
+            alert('thanks for your order! we'll email you with payment details soon 💚');
+            closeModal();
+        });
+
+        // Slideshow functionality
+        const photos = [
+            { caption: "sarah from the kura community rocking her cap! 🧢" },
+            { caption: "kura plushie helping wei ting journal ✍️" },
+            { caption: "game night with the kura squad! 🎮" }
+        ];
+
+        let currentSlide = 0;
+        const captionEl = document.querySelector('.photo-caption');
+        
+        function updateSlide() {
+            captionEl.textContent = photos[currentSlide].caption;
+        }
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + photos.length) % photos.length;
+            updateSlide();
+        });
+
+        document.querySelector('.next').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % photos.length;
+            updateSlide();
+        });
+
+        // Initial slide
+        updateSlide();
+
+        const variantButtons = document.querySelectorAll('.variant-btn');
+        variantButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                variantButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
