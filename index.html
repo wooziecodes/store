@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kura kura store ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: #FAF9FB;
+            color: #073045;
+        }
+
+        .header {
+            background-color: #F8EFE7;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .header p {
+            color: #356A61;
+            font-size: 1.125rem;
+            max-width: 36rem;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            background-color: #B4E0DE;
+            padding: 3rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .story-container {
+            max-width: 42rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .main-content {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .community-photos {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .photo-container {
+            aspect-ratio: 16/9;
+            background-color: #F8EFE7;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.3);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border: none;
+            border-radius: 9999px;
+            padding: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .slide-button.prev {
+            left: 0.5rem;
+        }
+
+        .slide-button.next {
+            right: 0.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .product-header {
+            background-color: #B4E0DE;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-content {
+            padding: 1rem;
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background-color: #F8EFE7;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: #356A61;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #073045;
+        }
+
+        .variant-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .variant-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            background: none;
+            cursor: pointer;
+        }
+
+        .variant-btn.selected {
+            border-color: #356A61;
+            color: #356A61;
+        }
+
+        .info-section {
+            background-color: #F8EFE7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .note-section {
+            background-color: #B4E0DE;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+            color: #356A61;
+        }
+
+        footer {
+            background-color: #073045;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .badge {
+            background-color: #B4E0DE;
+            color: #356A61;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>hey friends! 👋</h1>
+        <p>we've been getting requests for merch and finally made some cute stuff! super excited to share these with our kura community 🎉</p>
+    </header>
+
+    <section class="story-section">
+        <div class="story-container">
+            <h2 class="text-2xl mb-4">the story behind kura 🐢</h2>
+            <div class="story-card">
+                <p class="text-sm text-[#575757]">
+                    it all started in 2023 when three friends (rachel, kai, and min) noticed how many of our peers struggled with emotional wellbeing. 
+                    we wanted to create something that made emotional journaling feel less intimidating and more like chatting with a friend.
+                    <br><br>
+                    that's how kura was born! 🐣 named after the gentle sea turtle, kura is designed to be your patient companion through all of life's ups and downs.
+                    <br><br>
+                    today, we're a tiny (but mighty!) team working from our favorite cafes in singapore, building kura one feature at a time. every piece of merch helps fuel our mission to make emotional wellness accessible and fun for everyone! 💚
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="community-photos">
+            <h2 class="text-center mb-6">the kura fam 💚</h2>
+            <div class="photo-container">
+                <img src="https://via.placeholder.com/800x450" alt="Community photo" class="photo">
+                <div class="photo-caption"></div>
+            </div>
+            <button class="slide-button prev">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="slide-button next">
+                <i data-lucide="chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="text-center">
+            <span class="badge">limited release • sg only for now! 🇸🇬</span>
+        </div>
+
+        <div class="product-grid">
+            <!-- Plushie Card -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>smol kura plushie</h3>
+                </div>
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400" alt="Kura Plushie">
+                    </div>
+                    <p class="text-sm text-[#575757] mb-3">your very own kura! each plushie (20cm) is carefully made with lots of love 💚 perfect desk companion for your journaling sessions!</p>
+                    <p class="text-xl font-semibold">S$29.90</p>
+                    <button class="btn">
+                        <i data-lucide="shopping-cart"></i>
+                        add to cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cap Card -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>kura cap</h3>
+                </div>
+                <div class="product-content">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400" alt="Kura Cap">
+                    </div>
+                    <p class="text-sm text-[#575757] mb-3">represent team kura with this comfy cap! embroidered with our favorite turtle friend. adjustable strap to fit most head sizes 🧢</p>
+                    <p class="text-xl font-semibold mb-3">S$24.90</p>
+                    <div class="variant-buttons">
+                        <button class="variant-btn selected" data-variant="white">white</button>
+                        <button class="variant-btn" data-variant="black">black</button>
+                    </div>
+                    <button class="btn mt-4">
+                        <i data-lucide="shopping-cart"></i>
+                        add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="text-xl mb-4">the logistics stuff 📦</h2>
+            <div class="text-sm text-[#575757] space-y-3">
+                <p>• singapore addresses only (for now!)</p>
+                <p>• paynow or wise transfer</p>
+                <p>• free delivery if you spend above S$50</p>
+                <p>• we'll ship within 3-5 working days</p>
+            </div>
+        </div>
+
+        <div class="note-section">
+            <p class="text-sm">
+                psst! we're a tiny team of 3 making these with love. 
+                each order helps us keep kura swimming! 🐢💚
+            </p>
+        </div>
+
+        <div class="text-center py-8">
+            <p class="text-sm text-[#575757]">ordering now? we'll make sure it reaches you before the holidays! 🎄</p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="text-sm opacity-90">made with 💚 by the kura team</p>
+        <p class="text-sm opacity-70 mt-2">questions? dm us on instagram @kurakura.sg</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Slideshow functionality
+        const photos = [
+            { caption: "sarah from the kura community rocking her cap! 🧢" },
+            { caption: "kura plushie helping wei ting journal ✍️" },
+            { caption: "game night with the kura squad! 🎮" }
+        ];
+
+        let currentSlide = 0;
+        const captionEl = document.querySelector('.photo-caption');
+        
+        function updateSlide() {
+            captionEl.textContent = photos[currentSlide].caption;
+        }
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + photos.length) % photos.length;
+            updateSlide();
+        });
+
+        document.querySelector('.next').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % photos.length;
+            updateSlide();
+        });
+
+        // Initial slide
+        updateSlide();
+
+        // Variant selection
+        const variantButtons = document.querySelectorAll('.variant-btn');
+        variantButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                variantButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
