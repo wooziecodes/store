@@ -4,75 +4,209 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kura kura store ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
     <style>
+        :root {
+            --primary: #447A6E;
+            --secondary: #8FB5AE;
+            --accent: #B4D9D2;
+            --background: #F6F8F9;
+            --text: #2D3F4D;
+            --text-light: #6B7C88;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: #FAF9FB;
-            color: #073045;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
         }
 
         .header {
-            background-color: #F8EFE7;
-            padding: 2rem 1rem;
+            background: linear-gradient(to bottom, var(--accent), var(--background));
+            padding: 3rem 1.5rem;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 1.875rem;
-            margin-bottom: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
         }
 
         .header p {
-            color: #356A61;
+            color: var(--text);
             font-size: 1.125rem;
             max-width: 36rem;
             margin: 0 auto;
+            opacity: 0.9;
         }
 
         .story-section {
-            background-color: #B4E0DE;
-            padding: 3rem 1rem;
-            margin-top: 2rem;
+            background-color: var(--accent);
+            padding: 4rem 1.5rem;
+            margin: 2rem 0;
         }
 
         .story-container {
             max-width: 42rem;
             margin: 0 auto;
-            text-align: center;
         }
 
         .story-card {
             background-color: white;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .main-content {
             max-width: 64rem;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-header {
+            background-color: var(--accent);
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background-color: var(--background);
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #386459;
+        }
+
+        .variant-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .variant-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .variant-btn.selected {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: rgba(68, 122, 110, 0.05);
+        }
+
+        .info-section {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .note-section {
+            background-color: var(--accent);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--primary);
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: 500;
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            line-height: 1.8;
         }
 
         .community-photos {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
         }
 
         .photo-container {
             aspect-ratio: 16/9;
-            background-color: #F8EFE7;
-            border-radius: 0.5rem;
+            background-color: var(--background);
+            border-radius: 1rem;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .photo-caption {
@@ -80,10 +214,11 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(0,0,0,0.3);
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
             color: white;
-            padding: 1rem;
+            padding: 2rem 1.5rem 1.5rem;
             text-align: center;
+            font-weight: 500;
         }
 
         .slide-button {
@@ -93,125 +228,34 @@
             background-color: white;
             border: none;
             border-radius: 9999px;
-            padding: 0.5rem;
+            width: 3rem;
+            height: 3rem;
             cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .slide-button.prev {
-            left: 0.5rem;
-        }
-
-        .slide-button.next {
-            right: 0.5rem;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .product-card {
-            background-color: white;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .product-header {
-            background-color: #B4E0DE;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .product-content {
-            padding: 1rem;
-        }
-
-        .product-image {
-            aspect-ratio: 1;
-            background-color: #F8EFE7;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .btn {
-            width: 100%;
-            background-color: #356A61;
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            font-size: 1rem;
-            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            transition: all 0.2s;
         }
 
-        .btn:hover {
-            background-color: #073045;
-        }
-
-        .variant-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .variant-btn {
-            flex: 1;
-            padding: 0.5rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            background: none;
-            cursor: pointer;
-        }
-
-        .variant-btn.selected {
-            border-color: #356A61;
-            color: #356A61;
-        }
-
-        .info-section {
-            background-color: #F8EFE7;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .note-section {
-            background-color: #B4E0DE;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            text-align: center;
-            margin: 3rem 0;
-            color: #356A61;
-        }
-
-        footer {
-            background-color: #073045;
+        .slide-button:hover {
+            background-color: var(--primary);
             color: white;
-            padding: 1.5rem;
-            text-align: center;
+            transform: translateY(-50%) scale(1.05);
         }
 
-        .badge {
-            background-color: #B4E0DE;
-            color: #356A61;
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            margin-bottom: 2rem;
+        .slide-button.prev {
+            left: 1rem;
+        }
+
+        .slide-button.next {
+            right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -223,9 +267,8 @@
 
     <section class="story-section">
         <div class="story-container">
-            <h2 class="text-2xl mb-4">the story behind kura 🐢</h2>
             <div class="story-card">
-                <p class="text-sm text-[#575757]">
+                <p style="color: var(--text-light)">
                     it all started in 2023 when three friends (rachel, kai, and min) noticed how many of our peers struggled with emotional wellbeing. 
                     we wanted to create something that made emotional journaling feel less intimidating and more like chatting with a friend.
                     <br><br>
@@ -239,9 +282,9 @@
 
     <main class="main-content">
         <div class="community-photos">
-            <h2 class="text-center mb-6">the kura fam 💚</h2>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem">the kura fam 💚</h2>
             <div class="photo-container">
-                <img src="https://via.placeholder.com/800x450" alt="Community photo" class="photo">
+                <img src="/api/placeholder/800/450" alt="Community photo" style="width: 100%; height: 100%; object-fit: cover;">
                 <div class="photo-caption"></div>
             </div>
             <button class="slide-button prev">
@@ -257,17 +300,16 @@
         </div>
 
         <div class="product-grid">
-            <!-- Plushie Card -->
             <div class="product-card">
                 <div class="product-header">
                     <h3>smol kura plushie</h3>
                 </div>
                 <div class="product-content">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/400" alt="Kura Plushie">
+                        <img src="/api/placeholder/400/400" alt="Kura Plushie" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <p class="text-sm text-[#575757] mb-3">your very own kura! each plushie (20cm) is carefully made with lots of love 💚 perfect desk companion for your journaling sessions!</p>
-                    <p class="text-xl font-semibold">S$29.90</p>
+                    <p style="color: var(--text-light); margin-bottom: 1rem">your very own kura! each plushie (20cm) is carefully made with lots of love 💚 perfect desk companion for your journaling sessions!</p>
+                    <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary)">S$29.90</p>
                     <button class="btn">
                         <i data-lucide="shopping-cart"></i>
                         add to cart
@@ -275,22 +317,21 @@
                 </div>
             </div>
 
-            <!-- Cap Card -->
             <div class="product-card">
                 <div class="product-header">
                     <h3>kura cap</h3>
                 </div>
                 <div class="product-content">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/400" alt="Kura Cap">
+                        <img src="/api/placeholder/400/400" alt="Kura Cap" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <p class="text-sm text-[#575757] mb-3">represent team kura with this comfy cap! embroidered with our favorite turtle friend. adjustable strap to fit most head sizes 🧢</p>
-                    <p class="text-xl font-semibold mb-3">S$24.90</p>
+                    <p style="color: var(--text-light); margin-bottom: 1rem">represent team kura with this comfy cap! embroidered with our favorite turtle friend. adjustable strap to fit most head sizes 🧢</p>
+                    <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary)">S$24.90</p>
                     <div class="variant-buttons">
-                        <button class="variant-btn selected" data-variant="white">white</button>
-                        <button class="variant-btn" data-variant="black">black</button>
+                        <button class="variant-btn selected">white</button>
+                        <button class="variant-btn">black</button>
                     </div>
-                    <button class="btn mt-4">
+                    <button class="btn">
                         <i data-lucide="shopping-cart"></i>
                         add to cart
                     </button>
@@ -299,8 +340,8 @@
         </div>
 
         <div class="info-section">
-            <h2 class="text-xl mb-4">the logistics stuff 📦</h2>
-            <div class="text-sm text-[#575757] space-y-3">
+            <h2 style="color: var(--primary); margin-bottom: 1.5rem">the logistics stuff 📦</h2>
+            <div style="color: var(--text-light); display: grid; gap: 0.75rem">
                 <p>• singapore addresses only (for now!)</p>
                 <p>• paynow or wise transfer</p>
                 <p>• free delivery if you spend above S$50</p>
@@ -309,24 +350,23 @@
         </div>
 
         <div class="note-section">
-            <p class="text-sm">
+            <p>
                 psst! we're a tiny team of 3 making these with love. 
                 each order helps us keep kura swimming! 🐢💚
             </p>
         </div>
 
-        <div class="text-center py-8">
-            <p class="text-sm text-[#575757]">ordering now? we'll make sure it reaches you before the holidays! 🎄</p>
+        <div style="text-align: center; padding: 2rem 0">
+            <p style="color: var(--text-light)">ordering now? we'll make sure it reaches you before the holidays! 🎄</p>
         </div>
     </main>
 
     <footer>
-        <p class="text-sm opacity-90">made with 💚 by the kura team</p>
-        <p class="text-sm opacity-70 mt-2">questions? dm us on instagram @kurakura.sg</p>
+        <p>made with 💚 by the kura team</p>
+        <p style="margin-top: 0.5rem">questions? dm us on instagram @kurakura.sg</p>
     </footer>
 
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
 
         // Slideshow functionality
@@ -356,7 +396,6 @@
         // Initial slide
         updateSlide();
 
-        // Variant selection
         const variantButtons = document.querySelectorAll('.variant-btn');
         variantButtons.forEach(button => {
             button.addEventListener('click', () => {
